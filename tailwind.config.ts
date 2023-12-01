@@ -20,7 +20,7 @@ const config: Config = {
         background: "#d9dad7"
       },
       fontFamily: {
-       body: ['Noto-Sans-JP']
+       body: ['Noto Sans JP']
       }
     },
   },
