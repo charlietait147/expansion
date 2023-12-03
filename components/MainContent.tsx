@@ -1,12 +1,12 @@
 function MainContent() {
   return (
-    <main className="px-4 py-10 md:px-8 lg:max-w-screen-lg m-auto border-b-gray-400">
+    <main className="px-4 py-10 sm:px-8 lg:max-w-screen-lg m-auto border-b border-gray-200">
       <h2 className="text-primary text-4xl font-light leading-tight lg:text-6xl ">
         Expand your vocabulary
       </h2>
       <p className="text-secondary text-base font-light pt-6 max-w-xs lg:pt-8 lg:text-xl lg:max-w-lg ">
         {" "}
-        Use Chat GPT-4's powered thesaurus to vary and improve your language.
+        Use the Thesaurus API to vary and improve your language.
       </p>
       <div>
         <form action="submit" className="mt-4 max-w-fit flex relative">
