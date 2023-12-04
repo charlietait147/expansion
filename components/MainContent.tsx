@@ -1,13 +1,19 @@
 function MainContent() {
   return (
-    <main className="px-4 py-10 sm:px-8 lg:max-w-screen-lg m-auto border-b border-gray-200">
-      <h2 className="text-primary text-4xl font-light leading-tight lg:text-6xl ">
-        Expand your vocabulary
-      </h2>
+    <main className="px-4 pb-10 relative sm:px-8 lg:max-w-screen-lg m-auto border-b border-gray-200">
+        <div className="relative flex mb-2">
+          <div className="circle-lg"></div>
+          <div className="circle-sm"></div>
+        </div>
+        <h2 className="text-primary text-4xl font-light leading-tight inline lg:text-6xl">
+          Expand your vocabulary
+        </h2>
+
       <p className="text-secondary text-base font-light pt-6 max-w-xs lg:pt-8 lg:text-xl lg:max-w-lg ">
         {" "}
         Use the Thesaurus API to vary and improve your language.
       </p>
+
       <div>
         <form action="submit" className="mt-4 max-w-fit flex relative">
           <input
