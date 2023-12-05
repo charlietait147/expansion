@@ -119,7 +119,7 @@ const MainContent: React.FC = () => {
       <section className="px-4 pt-3 relative sm:px-8 lg:max-w-screen-lg m-auto">
         {isLoading ? (
           <div className="absolute top-0 transform translate-x-1/2 translate-y-1/2 ">
-            <div className="border-t-transparent border-solid animate-spin  rounded-full border-orange-500 border-4 h-24 w-24"></div>
+            <div className="border-t-transparent border-solid animate-spin  rounded-full border-orange-500 border-4 h-16 w-16 md:h-24 md:w-24"></div>
           </div>
         ) : selectedWord ? (
           <div>
@@ -132,49 +132,49 @@ const MainContent: React.FC = () => {
             {selectedWord.synonyms && selectedWord.synonyms.length > 0 ? (
                <div>
                <ul className="list-none flex flex-wrap grid-cols-2 gap-2 mt-4 md:mt-8 md:gap-4">
-                 <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
+                 <li className="p-3 rounded-s-3xl shadow-md bg-title text-white md:p-4">
                    {selectedWord.synonyms[0]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
+                 <li className="p-3 rounded-s-3xl shadow-md bg-title text-white md:p-4 ">
                    {selectedWord.synonyms[1]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
+                 <li className="p-3 rounded-s-3xl shadow-md bg-title text-white md:p-4">
                    {selectedWord.synonyms[2]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
+                 <li className="p-3 rounded-s-3xl shadow-md bg-tertiary md:p-4">
                    {selectedWord.synonyms[3]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
+                 <li className="p-3 rounded-s-3xl shadow-md bg-tertiary md:p-4">
                    {selectedWord.synonyms[4]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
+                 <li className="p-3 rounded-s-3xl shadow-md bg-tertiary md:p-4">
                    {selectedWord.synonyms[5]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
+                 <li className="p-3 rounded-s-3xl shadow-md bg-tertiary md:p-4">
                    {selectedWord.synonyms[6]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md">
+                 <li className="p-3 rounded-s-3xl shadow-md md:p-4">
                    {selectedWord.synonyms[7]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md">
+                 <li className="p-3 rounded-s-3xl shadow-md md:p-4">
                    {selectedWord.synonyms[8]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md">
+                 <li className="p-3 rounded-s-3xl shadow-md md:p-4">
                    {selectedWord.synonyms[9]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md">
+                 <li className="p-3 rounded-s-3xl shadow-md md:p-4">
                    {selectedWord.synonyms[10]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md">
+                 <li className="p-3 rounded-s-3xl shadow-md md:p-4">
                    {selectedWord.synonyms[11]}
                  </li>
-                 <li className="p-4 rounded-s-3xl shadow-md">
+                 <li className="p-3 rounded-s-3xl shadow-md md:p-4">
                    {selectedWord.synonyms[12]}
                  </li>
                </ul>
              </div>
             ) : (
-              <p className="text-md font-light text-primary mt-4 lg:text-lg"> No data available! Are you sure this is a valid word?</p>
+              <p className="text-md font-light text-primary mt-4 lg:text-lg"> No data is available for this word. Try another one!</p>
             )}
           </div>
         ) : apiError ? (
