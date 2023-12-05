@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import axios, { AxiosResponse } from "axios";
 
 interface Thesaurus {
@@ -9,23 +9,34 @@ interface Thesaurus {
 
 const MainContent: React.FC = () => {
   const [selectedWord, setSelectedWord] = useState<Thesaurus | null>(null);
-  const [word, setWord] = useState("");
+  const [word, setWord] = useState<string>("");
   const [wordError, setWordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState("");
   // const [isLoading, setIsLoading] = useState(false);
 
-  const handleChangeWord = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setWord(e.target.value);
+  const handleChangeWord = (e: ChangeEvent<HTMLInputElement>) => {
     setWordError("");
+    setWord(e.target.value);
+    
   };
+
+  const removeText = () => {
+    setWord((prevWord) => {
+      const trimmedWord = prevWord.trim();
+      return trimmedWord;
+    })
+  };
+
+  // const removeText = () => {
+  //   setWord((word) => word.trim());
+  // }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!word) {
       setWordError("Please enter a valid word");
-      // setIsLoading(false);
       return;
     }
 
@@ -48,20 +59,6 @@ const MainContent: React.FC = () => {
       setApiError("No Data Available ...");
     }
   };
-
-  // axios
-  //   .get<Thesaurus>(`https://api.api-ninjas.com/v1/thesaurus?word=${word}`, {
-  //     headers: {
-  //       "X-Api-Key": "52BUJsSriVSmtPiBYuLDcA==1a7LRurgWFOghhzN",
-  //     },
-  //   })
-  //   .then((res) => {
-  //     // const selectedWord: Thesaurus = res.data;
-  //     // console.log(selectedWord);
-  //    setSelectedWord(res.data)
-  //   })
-  //   .catch((err) => console.log(err));
-  // };
   return (
     <main>
       <section className="px-4 pb-10 relative sm:px-8 lg:max-w-screen-lg m-auto border-b border-gray-200">
@@ -85,23 +82,27 @@ const MainContent: React.FC = () => {
               className="w-max rounded-md border shadow-lg text-xs font-light py-1.5 pl-3 pr-10 focus:border-gray-400 outline-none"
               placeholder="Start typing any word"
               id="word"
-              onChange={handleChangeWord}
               value={word}
+              onChange={handleChangeWord}
             />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="grey"
+            <div
+              onClick={removeText}
               className="w-5 absolute right-14 top-2 cursor-pointer hover:stroke-black"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="grey"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
             <button className="ml-3 border rounded-md flex p-2 shadow-lg cursor-pointer hover:border-gray-500">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
