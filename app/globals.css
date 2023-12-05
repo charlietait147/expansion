@@ -9,5 +9,5 @@
 }
 
 .circle-sm{
-    @apply absolute left-12 bg-orange-500 rounded-full w-12 h-12
+    @apply absolute left-12 bg-tertiary rounded-full w-12 h-12
 }

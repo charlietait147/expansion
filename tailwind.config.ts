@@ -17,7 +17,8 @@ const config: Config = {
         primary: "#1a2639",
         secondary: "#3e4a61",
         title: "#c24d2c",
-        background: "#d9dad7"
+        background: "#d9dad7",
+        tertiary: "#FFA500",
       },
       fontFamily: {
        body: ['Noto Sans JP']
