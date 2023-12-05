@@ -18,19 +18,12 @@ const MainContent: React.FC = () => {
   const handleChangeWord = (e: ChangeEvent<HTMLInputElement>) => {
     setWordError("");
     setWord(e.target.value);
-    
   };
 
   const removeText = () => {
-    setWord((prevWord) => {
-      const trimmedWord = prevWord.trim();
-      return trimmedWord;
-    })
+    // Replace all alphabetic characters with an empty string
+    setWord((prevWord) => prevWord.replace(/[a-zA-Z\s]/g, ''));
   };
-
-  // const removeText = () => {
-  //   setWord((word) => word.trim());
-  // }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -56,7 +49,7 @@ const MainContent: React.FC = () => {
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data", error);
-      setApiError("No Data Available ...");
+      setApiError("There has been an error fetching data. Sorry!");
     }
   };
   return (
@@ -79,17 +72,15 @@ const MainContent: React.FC = () => {
             className="mt-4 max-w-fit flex relative"
           >
             <input
-              className="w-max rounded-md border shadow-lg text-xs font-light py-1.5 pl-3 pr-10 focus:border-gray-400 outline-none"
+              className="w-max rounded-md border shadow-lg text-xs font-light py-1.5 pl-3 pr-10 focus:border-gray-400 outline-none lg:text-base lg:py-2 lg:pl-4 lg:pr-12"
               placeholder="Start typing any word"
               id="word"
               value={word}
               onChange={handleChangeWord}
             />
-            <div
-              onClick={removeText}
-              className="w-5 absolute right-14 top-2 cursor-pointer hover:stroke-black"
-            >
-              <svg
+            <div>
+              <svg onClick={removeText}
+              className="w-5 absolute right-14 top-2 cursor-pointer hover:stroke-black lg:w-6 lg:top-2.5 lg:right-16"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -110,7 +101,7 @@ const MainContent: React.FC = () => {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="grey"
-                className="w-4 hover:stroke-black"
+                className="w-4 hover:stroke-black lg:w-6"
               >
                 <path
                   strokeLinecap="round"
@@ -132,58 +123,62 @@ const MainContent: React.FC = () => {
           </div>
         ) : selectedWord ? (
           <div>
-            <h2 className="text-lg text-primary inline-block lg:text-xl underline underline-offset-4">
+            <h2 className="text-lg text-primary font-medium inline-block md:text-2xl underline underline-offset-8">
               {selectedWord.word}
             </h2>{" "}
-            <span className="text-title text-lg font-light inline-block lg:text-xl no-underline">
+            <span className="text-title text-lg font-light inline-block md:text-2xl no-underline">
               - synonyms
             </span>
-            <div>
-              <ul className="list-none flex flex-wrap grid-cols-2 gap-2 mt-4">
-                <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
-                  {selectedWord.synonyms[0]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
-                  {selectedWord.synonyms[1]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
-                  {selectedWord.synonyms[2]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
-                  {selectedWord.synonyms[3]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
-                  {selectedWord.synonyms[4]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
-                  {selectedWord.synonyms[5]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
-                  {selectedWord.synonyms[6]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md">
-                  {selectedWord.synonyms[7]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md">
-                  {selectedWord.synonyms[8]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md">
-                  {selectedWord.synonyms[9]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md">
-                  {selectedWord.synonyms[10]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md">
-                  {selectedWord.synonyms[11]}
-                </li>
-                <li className="p-4 rounded-s-3xl shadow-md">
-                  {selectedWord.synonyms[12]}
-                </li>
-              </ul>
-            </div>
+            {selectedWord.synonyms && selectedWord.synonyms.length > 0 ? (
+               <div>
+               <ul className="list-none flex flex-wrap grid-cols-2 gap-2 mt-4 md:mt-8 md:gap-4">
+                 <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
+                   {selectedWord.synonyms[0]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
+                   {selectedWord.synonyms[1]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md bg-title text-white">
+                   {selectedWord.synonyms[2]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
+                   {selectedWord.synonyms[3]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
+                   {selectedWord.synonyms[4]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
+                   {selectedWord.synonyms[5]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md bg-tertiary">
+                   {selectedWord.synonyms[6]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md">
+                   {selectedWord.synonyms[7]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md">
+                   {selectedWord.synonyms[8]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md">
+                   {selectedWord.synonyms[9]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md">
+                   {selectedWord.synonyms[10]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md">
+                   {selectedWord.synonyms[11]}
+                 </li>
+                 <li className="p-4 rounded-s-3xl shadow-md">
+                   {selectedWord.synonyms[12]}
+                 </li>
+               </ul>
+             </div>
+            ) : (
+              <p className="text-md font-light text-primary mt-4 lg:text-lg"> No data available! Are you sure this is a valid word?</p>
+            )}
           </div>
         ) : apiError ? (
-          <p className="text-lg text-primary lg:text-xl">{apiError}</p>
+          <p className="text-md font-light text-primary mt-4 lg:text-lg">{apiError}</p>
         ) : (
           <p></p>
         )}
