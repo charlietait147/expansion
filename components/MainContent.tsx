@@ -53,7 +53,7 @@ const MainContent: React.FC = () => {
   return (
     <main>
       <section className="px-4 pb-10 relative sm:px-8 lg:max-w-screen-lg m-auto border-b border-gray-200">
-        <div className="relative flex mb-2">
+        <div className="relative flex mb-2 lg:mb-4">
           <div className="circle-lg"></div>
           <div className="circle-sm"></div>
         </div>
