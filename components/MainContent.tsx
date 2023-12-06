@@ -1,5 +1,5 @@
 "use client";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, FormEvent} from "react";
 import axios, { AxiosResponse } from "axios";
 
 interface Thesaurus {
@@ -13,7 +13,6 @@ const MainContent: React.FC = () => {
   const [wordError, setWordError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
 
   const handleChangeWord = (e: ChangeEvent<HTMLInputElement>) => {
     setWordError("");
@@ -21,11 +20,10 @@ const MainContent: React.FC = () => {
   };
 
   const removeText = () => {
-    // Replace all alphabetic characters with an empty string
     setWord((prevWord) => prevWord.replace(/[a-zA-Z\s]/g, ''));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!word) {
@@ -174,11 +172,11 @@ const MainContent: React.FC = () => {
                </ul>
              </div>
             ) : (
-              <p className="text-md font-light text-primary mt-4 lg:text-lg"> No data is available for this word. Try another one!</p>
+              <p className="text-sm font-light text-primary mt-4 lg:text-base"> No data is available for this word. Try another one!</p>
             )}
           </div>
         ) : apiError ? (
-          <p className="text-md font-light text-primary mt-4 lg:text-lg">{apiError}</p>
+          <p className="text-sm font-light text-primary mt-4 lg:text-base">{apiError}</p>
         ) : (
           <p></p>
         )}
