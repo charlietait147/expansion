@@ -14,6 +14,8 @@ const MainContent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState("");
 
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+
   const handleChangeWord = (e: ChangeEvent<HTMLInputElement>) => {
     setWordError("");
     setWord(e.target.value);
@@ -38,7 +40,7 @@ const MainContent: React.FC = () => {
         `https://api.api-ninjas.com/v1/thesaurus?word=${word}`,
         {
           headers: {
-            "X-Api-Key": "52BUJsSriVSmtPiBYuLDcA==1a7LRurgWFOghhzN",
+            "X-Api-Key": apiKey,
           },
         }
       );
